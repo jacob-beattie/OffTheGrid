@@ -11,19 +11,28 @@
           <h1>SHOE COLLECTION</h1>
         </div>
         <nav class="nav-links-container">
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Add Shoe</a>
+            <a href="add-shoe.html" class="add-shoe-button">Add Shoe</a>
         </nav>
-      </header>      
-    <main>
+    </header>      
+      <main>
+        <h2>Jacob's Shoe Collection</h2>
+        <div class="sort-container">
+            <label for="sort-by">Sort by:</label>
+            <select id="sort-by">
+                <option value="name">Name</option>
+                <option value="date">Date</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
         <section class="shoe-collection">
             <div id="shoe-container"></div>
-          </section>
-    </main>
+        </section>
+    </main>    
     <footer>
       <p>Copyright © 2023 Shoe Collection</p>
     </footer>
     <script src="script.js"></script>
   </body>
 </html>
+
+
