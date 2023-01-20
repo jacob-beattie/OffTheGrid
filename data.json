@@ -28,6 +28,12 @@
         "image": "shoe-images/vans-old-skool.jpeg",
         "date": "May, 2021",
         "price": "$150"
+    },
+    {
+        "name": "New Balance 550 'White/Grey'",
+        "image": "shoe-images/new-balance-550.jpeg",
+        "date": "July, 2022",
+        "price": "$280"
     }
     
   ]
