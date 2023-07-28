@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoeContext } from './ShoeContext';
+import ShoeAddedPopup from './ShoeAddedPopup';
 
 const AddShoe = () => {
   const [selectedShoe, setSelectedShoe] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
 
   // List of shoes available in the dropdown with their respective data
   const shoeOptions = [
@@ -31,8 +33,14 @@ const AddShoe = () => {
       if (selectedShoeObject) {
         // Dispatch the action to add the selected shoe object to the context state
         dispatch({ type: 'ADD_SHOE', payload: selectedShoeObject });
+        setShowPopup(true); // Show the pop-up on successful addition
       }
     }
+  };
+
+  // Function to close the pop-up
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   return (
@@ -64,6 +72,9 @@ const AddShoe = () => {
           </select>
           {/* Button to add the selected shoe to the dashboard */}
           <button onClick={handleAddShoeToDashboard}>Add to Dashboard</button>
+
+          {/* Conditionally render the pop-up based on showPopup state */}
+          {showPopup && <ShoeAddedPopup onClose={closePopup} />}
         </div>
       </main>
       <footer>
