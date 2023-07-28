@@ -3,27 +3,37 @@ import { Link } from 'react-router-dom';
 import { ShoeContext } from './ShoeContext';
 
 const AddShoe = () => {
-    const [selectedShoe, setSelectedShoe] = useState('');
+  const [selectedShoe, setSelectedShoe] = useState('');
 
-    // List of shoes available in the dropdown
-    const shoeOptions = ['Shoe 1', 'Shoe 2', 'Shoe 3', 'Shoe 4'];
-  
-    // Get the dispatch function from the ShoeContext
-    const { dispatch } = useContext(ShoeContext);
-  
-    // Function to handle the selection of a shoe
-    const handleShoeSelection = (event) => {
-      setSelectedShoe(event.target.value);
-    };
-  
-    // Function to handle adding the selected shoe to the dashboard
-    const handleAddShoeToDashboard = () => {
-      // Check if a shoe is selected
-      if (selectedShoe) {
-        // Dispatch the action to add the shoe to the context state
-        dispatch({ type: 'ADD_SHOE', payload: selectedShoe });
+  // List of shoes available in the dropdown with their respective data
+  const shoeOptions = [
+    { name: 'Shoe 1', price: '$100', releaseDate: '2023-07-25', image: 'path/to/shoe-image-1.jpg' },
+    { name: 'Shoe 2', price: '$120', releaseDate: '2023-08-15', image: 'path/to/shoe-image-2.jpg' },
+    { name: 'Shoe 3', price: '$90', releaseDate: '2023-09-01', image: 'path/to/shoe-image-3.jpg' },
+    { name: 'Shoe 4', price: '$80', releaseDate: '2023-09-15', image: 'path/to/shoe-image-4.jpg' },
+  ];
+
+  // Get the dispatch function from the ShoeContext
+  const { dispatch } = useContext(ShoeContext);
+
+  // Function to handle the selection of a shoe
+  const handleShoeSelection = (event) => {
+    setSelectedShoe(event.target.value);
+  };
+
+  // Function to handle adding the selected shoe to the dashboard
+  const handleAddShoeToDashboard = () => {
+    // Check if a shoe is selected
+    if (selectedShoe) {
+      // Find the selected shoe object from the shoeOptions array
+      const selectedShoeObject = shoeOptions.find((shoe) => shoe.name === selectedShoe);
+
+      if (selectedShoeObject) {
+        // Dispatch the action to add the selected shoe object to the context state
+        dispatch({ type: 'ADD_SHOE', payload: selectedShoeObject });
       }
-    };
+    }
+  };
 
   return (
     <div>
@@ -42,18 +52,18 @@ const AddShoe = () => {
       </header>
       <main className="add-shoe-main">
         <div className="add-shoe-container">
-            <h2>Add Shoe</h2>
-            {/* Dropdown to select a shoe */}
-            <select value={selectedShoe} onChange={handleShoeSelection}>
-                <option value="">Select a shoe</option>
-                {shoeOptions.map((shoe, index) => (
-                <option key={index} value={shoe}>
-                    {shoe}
-                </option>
-                ))}
-            </select>
-            {/* Button to add the selected shoe to the dashboard */}
-            <button onClick={handleAddShoeToDashboard}>Add to Dashboard</button>
+          <h2>Add Shoe</h2>
+          {/* Dropdown to select a shoe */}
+          <select value={selectedShoe} onChange={handleShoeSelection}>
+            <option value="">Select a shoe</option>
+            {shoeOptions.map((shoe, index) => (
+              <option key={index} value={shoe.name}> {/* Use shoe.name as the value */}
+                {shoe.name}
+              </option>
+            ))}
+          </select>
+          {/* Button to add the selected shoe to the dashboard */}
+          <button onClick={handleAddShoeToDashboard}>Add to Dashboard</button>
         </div>
       </main>
       <footer>

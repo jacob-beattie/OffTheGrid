@@ -1,8 +1,10 @@
+// ShoeContext.js
+
 import React, { createContext, useReducer } from 'react';
 
 // Define the initial state
 const initialState = {
-  shoes: [], // An array to store the selected shoes
+  shoes: [],
 };
 
 // Create the context
@@ -13,10 +15,10 @@ const shoeReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_SHOE':
       // Check if the shoe is already added
-      if (!state.shoes.includes(action.payload)) {
+      if (!state.shoes.some((shoe) => shoe.name === action.payload.name)) {
         return {
-          ...state, // Spread the existing state
-          shoes: [...state.shoes, action.payload], // Add the new shoe to the array
+          ...state,
+          shoes: [...state.shoes, action.payload],
         };
       }
       return state;
@@ -35,4 +37,5 @@ export const ShoeProvider = ({ children }) => {
     </ShoeContext.Provider>
   );
 };
+
 

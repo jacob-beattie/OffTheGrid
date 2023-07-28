@@ -255,6 +255,84 @@ form {
   margin-bottom: 30px;
 }
 
+/* AddShoe.css */
 
+.add-shoe-main {
+  
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
 
+.add-shoe-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-shoe-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.add-shoe-form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-shoe-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for the dashboard page */
+
+.shoe-panel-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.shoe-panel {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack the content vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+}
+
+.shoe-panel h3 {
+  margin-top: 0;
+}
+
+.shoe-panel p {
+  margin: 0;
+}
+
+.shoe-panel img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+/* Positioning the elements inside the shoe panel */
+
+.shoe-name {
+  font-weight: bold;
+}
+
+.shoe-title {
+  font-weight: bold;
+}
 

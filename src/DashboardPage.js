@@ -21,16 +21,19 @@ const DashboardPage = () => {
         </nav>
       </header>
       <main className="login-main">
-        {/* Render the selected shoe information */}
-        {state.shoes.length > 0 ? (
-          <div>
-            <h2>Selected Shoes:</h2>
-            <ul>
+      {state.shoes.length > 0 ? (        
+            <div className="shoe-panel-container">
               {state.shoes.map((shoe, index) => (
-                <li key={index}>{shoe}</li>
+                <div key={index} className="shoe-panel">
+                  <h3 className="shoe-name">{shoe.name}</h3>
+                  <img src={shoe.image} alt={shoe.name} />
+
+                  {/* Separate elements for titles and values */}
+                  <p><span className="shoe-title">Price:</span> {shoe.price}</p>
+                  <p><span className="shoe-title">Release Date:</span> {shoe.releaseDate}</p>
+                </div>
               ))}
-            </ul>
-          </div>
+            </div>
         ) : (
           <p>No shoes added to the dashboard yet.</p>
         )}
@@ -43,13 +46,3 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
-
-
-
-
-
-
-
-
-
-
