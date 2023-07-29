@@ -9,7 +9,7 @@ const DashboardPage = () => {
     <div>
       <header>
         <div className="title-container">
-          <h1>SHOE COLLECTION</h1>
+          <h1>OffTheGrid</h1>
         </div>
         <nav className="nav-links-container">
           <Link to="/addshoe" className="add-shoe-button">
@@ -39,7 +39,7 @@ const DashboardPage = () => {
         )}
       </main>
       <footer>
-        <p>Copyright © 2023 Shoe Collection</p>
+        <p>Copyright © 2023 OffTheGrid</p>
       </footer>
     </div>
   );

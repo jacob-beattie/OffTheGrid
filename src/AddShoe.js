@@ -54,7 +54,7 @@ const AddShoe = () => {
     <div>
       <header>
         <div className="title-container">
-          <h1>SHOE COLLECTION</h1>
+          <h1>OffTheGrid</h1>
         </div>
         <nav className="nav-links-container">
           <Link to="/dashboard" className="add-shoe-button">
@@ -91,7 +91,7 @@ const AddShoe = () => {
         </div>
       </main>
       <footer>
-        <p>Copyright © 2023 Shoe Collection</p>
+        <p>Copyright © 2023 OffTheGrid</p>
       </footer>
     </div>
   );
