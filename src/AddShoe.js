@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoeContext } from './ShoeContext';
 import ShoeAddedPopup from './ShoeAddedPopup';
@@ -7,18 +7,18 @@ const AddShoe = () => {
   const [selectedShoe, setSelectedShoe] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [alreadyAdded, setAlreadyAdded] = useState(false);
-  
-
-  // List of shoes available in the dropdown with their respective data
-  const shoeOptions = [
-    { name: 'Nike Air Jordan 1 Low Shadow 3.0', price: '$380', releaseDate: 'July 2021', image: 'path/to/shoe-image-1.jpg' },
-    { name: 'Adidas Yeezy 350 V2 Citrin', price: '$380', releaseDate: 'September 2020', image: 'path/to/shoe-image-2.jpg' },
-    { name: 'Nike Air VaporMax Flyknit 3', price: '$310', releaseDate: 'March 2021', image: 'path/to/shoe-image-3.jpg' },
-    { name: 'Adidas NMD R1 Japan Triple White', price: '$280', releaseDate: 'August 2017', image: 'path/to/shoe-image-4.jpg' },
-  ];
+  const [shoeOptions, setShoeOptions] = useState([]); // Store the shoe data in state
 
   // Get the dispatch function from the ShoeContext
   const { state, dispatch } = useContext(ShoeContext);
+
+  useEffect(() => {
+    // Fetch the shoe data from shoes.json
+    fetch('/shoes.json')
+      .then((response) => response.json())
+      .then((data) => setShoeOptions(data))
+      .catch((error) => console.error('Error fetching shoe data:', error));
+  }, []); // Empty dependency array to run the effect only once on mount
 
   // Function to handle the selection of a shoe
   const handleShoeSelection = (event) => {
