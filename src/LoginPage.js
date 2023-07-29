@@ -6,22 +6,26 @@ function LoginPage() {
   const navigateTo = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false); // Add the error state
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
+    setError(false); // Reset the error state when the user starts typing
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    setError(false); // Reset the error state when the user starts typing
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Your login validation logic goes here
-    // For simplicity, we'll assume login is successful if username and password are non-empty
-    if (username && password) {
+    if (username === 'Testing123' && password === 'Testing123') {
       // Redirect to the dashboard page on successful login
       navigateTo('/dashboard');
+    } else {
+      // Set the error state to true if login is unsuccessful
+      setError(true);
     }
   };
 
@@ -43,7 +47,7 @@ function LoginPage() {
               className="login-input"
               required
               value={username}
-              onChange={handleUsernameChange}
+              onInput={handleUsernameChange}
               placeholder="Username"
             />
 
@@ -54,7 +58,7 @@ function LoginPage() {
               className="login-input"
               required
               value={password}
-              onChange={handlePasswordChange}
+              onInput={handlePasswordChange}
               placeholder="Password"
             />
 
@@ -63,6 +67,13 @@ function LoginPage() {
             </button>
           </form>
         </div>
+
+        {/* Conditionally render the dialog */}
+        {error && (
+          <div className="error-dialog">
+            <p>Incorrect username or password. Please try again.</p>
+          </div>
+        )}
       </main>
       <footer>
         <p>Copyright © 2023 OffTheGrid</p>

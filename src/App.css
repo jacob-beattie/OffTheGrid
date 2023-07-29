@@ -201,7 +201,19 @@ form {
   color: #1DB954;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   text-align: center;
-  
+}
+
+.error-dialog {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffcccc;
+  padding: 10px 20px;
+  border: 1px solid #ff0000;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 /* AddShoe.css */
