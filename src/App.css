@@ -337,10 +337,11 @@ form {
 }
 
 .shoe-panel img {
-  max-width: 100%;
-  height: auto;
   margin-top: 5px;
   margin-bottom: 20px;
+  width: 160px; 
+  height: 90px; 
+  object-fit: cover; 
 }
 
 /* Positioning the elements inside the shoe panel */
