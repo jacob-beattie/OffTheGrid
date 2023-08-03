@@ -143,6 +143,7 @@ footer {
 
 .login-main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
@@ -308,6 +309,26 @@ form {
 
 /* Styling for the dashboard page */
 
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f2f2f2;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.shoe-collection-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 50px; /* Add margin to create space between heading and shoe panels */
+  font-size: 3em;
+  font-family: 'Open Sans', sans-serif;
+  color: #1DB954;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
 .shoe-panel-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -319,6 +340,7 @@ form {
 .shoe-panel {
   background-color: #fff;
   border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 20px;
   display: flex; /* Use flexbox */

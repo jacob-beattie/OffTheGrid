@@ -24,7 +24,8 @@ const DashboardPage = () => {
           </Link>
         </nav>
       </header>
-      <main className="login-main">
+      <main className="dashboard-main">
+      <h2 className="shoe-collection-heading">Jacob's Shoe Collection</h2>
       {state.shoes.length > 0 ? (        
             <div className="shoe-panel-container">
               {state.shoes.map((shoe, index) => (
