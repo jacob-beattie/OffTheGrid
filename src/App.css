@@ -325,6 +325,7 @@ form {
   flex-direction: column; /* Stack the content vertically */
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
+  text-align: center;
 }
 
 .shoe-panel h3 {
@@ -349,6 +350,17 @@ form {
 }
 
 .shoe-title {
+  font-weight: bold;
+}
+
+.shoe-panel button {
+  background-color: #ff5757;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
   font-weight: bold;
 }
 

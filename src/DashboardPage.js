@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import { ShoeContext } from './ShoeContext';
 
 const DashboardPage = () => {
-  const { state } = useContext(ShoeContext);
+  const { state, dispatch } = useContext(ShoeContext);
+
+  const handleRemoveShoe = (shoeName) => {
+    dispatch({ type: 'REMOVE_SHOE', payload: shoeName });
+  };
 
   return (
     <div>
@@ -31,6 +35,9 @@ const DashboardPage = () => {
                   {/* Separate elements for titles and values */}
                   <p><span className="shoe-title">Price:</span> {shoe.price}</p>
                   <p><span className="shoe-title">Release Date:</span> {shoe.releaseDate}</p>
+
+                  {/* Remove button */}
+                  <button onClick={() => handleRemoveShoe(shoe.name)}>Remove</button>
                 </div>
               ))}
             </div>
