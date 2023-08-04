@@ -156,7 +156,7 @@ footer {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 40px;
+  padding: 30px 40px 20px 40px;
   width: 80%;
   height: 100%;
   max-width: 350px;
@@ -215,6 +215,14 @@ form {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+.no-account {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #666;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /* AddShoe.css */
