@@ -12,19 +12,21 @@ function LoginPage() {
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
-    setError(false);
+    setError(false); // Reset the error state when the user starts typing
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    setError(false);
+    setError(false); // Reset the error state when the user starts typing
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
     if (username === 'Testing123' && password === 'Testing123') {
+      // Redirect to the dashboard page on successful login
       navigateTo('/dashboard');
     } else {
+      // Set the error state to true if login is unsuccessful
       setError(true);
     }
   };
@@ -83,6 +85,7 @@ function LoginPage() {
               </p>
             </form>
 
+            {/* Conditionally render the error dialog */}
             {error && (
               <div className="error-dialog">
                 <p>Incorrect username or password. Please try again.</p>
