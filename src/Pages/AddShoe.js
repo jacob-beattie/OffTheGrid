@@ -62,8 +62,8 @@ const AddShoe = () => {
   return (
     <div>
       <header>
-        <div className="title-container">
-          <h1>OffTheGrid</h1>
+        <div className="logo-container">
+          <img src="/OFFTHEGRID.png" alt="OffTheGrid Logo" className="logo-image" />
         </div>
         <nav className="nav-links-container">
           <Link to="/dashboard" className="add-shoe-button">
