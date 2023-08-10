@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoeContext } from '../Components/ShoeContext';
 import ShoeAddedPopup from '../Popups/ShoeAddedPopup';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const AddShoe = () => {
   const [selectedShoe, setSelectedShoe] = useState('');
@@ -12,13 +13,21 @@ const AddShoe = () => {
   // Get the dispatch function from the ShoeContext
   const { state, dispatch } = useContext(ShoeContext);
 
+  // Initialize Firestore instance
+  const db = getFirestore();
+
   useEffect(() => {
-    // Fetch the shoe data from shoes.json
-    fetch('/shoes.json')
-      .then((response) => response.json())
-      .then((data) => setShoeOptions(data))
-      .catch((error) => console.error('Error fetching shoe data:', error));
-  }, []); // Empty dependency array to run the effect only once on mount
+    // Fetch the shoe data from Firestore
+    const fetchShoes = async () => {
+      const shoesCollection = collection(db, 'Shoes');
+      const snapshot = await getDocs(shoesCollection);
+      const shoeData = snapshot.docs.map((doc) => doc.data());
+      console.log(shoeData);
+      setShoeOptions(shoeData);
+    };
+
+    fetchShoes();
+  }, [db]); // Dependency array to run the effect when db changes
 
   // Function to handle the selection of a shoe
   const handleShoeSelection = (event) => {
