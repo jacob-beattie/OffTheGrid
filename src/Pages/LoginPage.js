@@ -13,8 +13,8 @@ function LoginPage() {
   return (
     <div>
       <header>
-        <div className="title-container">
-          <h1>OffTheGrid</h1>
+        <div className="logo-container">
+          <img src="/OFFTHEGRID.png" alt="OffTheGrid Logo" className="logo-image" />
         </div>
       </header>
       <main className="login-main">
