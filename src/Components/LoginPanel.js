@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import LoginErrorPopup from '../Popups/LoginErrorPopup';
 
@@ -39,6 +39,23 @@ const LoginPanel = ({ onToggleCreateAccount }) => {
       });
   };
 
+  const handleGoogleSignIn = async () => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      // User signed in with Google, you can now access result.user
+      console.log('Google Sign-In successful:', result.user);
+      // Additional code or redirection logic after successful login
+      navigateTo('/dashboard');
+    } catch (error) {
+      console.error('Error during Google Sign-In:', error.message);
+      setError(error.message);
+      setShowErrorPopup(true);
+    }
+  };
+
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
     setEmail('');
@@ -74,6 +91,13 @@ const LoginPanel = ({ onToggleCreateAccount }) => {
         <button type="submit" className="login-button">
           Login
         </button>
+
+        {/* Custom-styled Google Sign-In button */}
+        <button type="button" className="google-sign-in-button" onClick={handleGoogleSignIn}>
+          <img src="/google-logo.png" alt="Google Logo" className="google-logo" />
+          Sign In with Google
+        </button>
+
         <p className='no-account' onClick={onToggleCreateAccount}>
           Don't have an account?
         </p>

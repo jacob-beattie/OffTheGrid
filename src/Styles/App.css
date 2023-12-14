@@ -230,6 +230,27 @@ form {
   cursor: pointer;
 }
 
+/* Styling for the Google Sign-In button */
+.google-sign-in-button {
+  display: flex;
+  align-items: center;
+  background-color: #005eff; 
+  color: #ffffff; 
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: medium;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+/* Styling for the Google logo */
+.google-logo {
+  width: 20px; 
+  height: 20px;
+  margin-right: 40px; 
+}
+
 /* AddShoe.css */
 
 .add-shoe-main {
@@ -436,4 +457,14 @@ form {
     cursor: pointer;
     font-weight: bold;
     font-size: large;
+}
+
+.confirm-button {
+  background-color: #4caf50; /* Green color, adjust as needed */
+  margin-right: 10px;
+}
+
+.cancel-button {
+  background-color: #f44336; /* Red color, adjust as needed */
+  margin-left: 10px;
 }

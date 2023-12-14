@@ -1,12 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoeContext } from '../Components/ShoeContext';
+import ShoeRemovePopup from '../Popups/ShoeRemovePopup';
 
 const DashboardPage = () => {
   const { state, dispatch } = useContext(ShoeContext);
+  const [selectedShoe, setSelectedShoe] = useState(null);
 
   const handleRemoveShoe = (shoeName) => {
-    dispatch({ type: 'REMOVE_SHOE', payload: shoeName });
+    setSelectedShoe(shoeName);
+  };
+
+  const handleConfirmRemove = () => {
+    // Dispatch the action to remove the shoe
+    dispatch({ type: 'REMOVE_SHOE', payload: selectedShoe });
+    // Reset the selected shoe
+    setSelectedShoe(null);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedShoe(null);
   };
 
   return (
@@ -39,6 +52,10 @@ const DashboardPage = () => {
 
                   {/* Remove button */}
                   <button onClick={() => handleRemoveShoe(shoe.name)}>Remove</button>
+                  {/* Popup for confirmation */}
+                  {selectedShoe && (
+                    <ShoeRemovePopup onClose={handleClosePopup} onConfirm={handleConfirmRemove} shoeName={selectedShoe}/>
+                  )}
                 </div>
               ))}
             </div>
