@@ -230,6 +230,13 @@ form {
   cursor: pointer;
 }
 
+.separator {
+  margin: 20px 0; /* Adjust the margin as needed */
+  border: none;
+  height: 1px;
+  background-color: #ccc; /* Adjust the color as needed */
+}
+
 /* Styling for the Google Sign-In button */
 .google-sign-in-button {
   display: flex;
@@ -240,7 +247,6 @@ form {
   border: none;
   cursor: pointer;
   font-size: medium;
-  margin-top: 10px;
   transition: background-color 0.2s;
 }
 
@@ -460,11 +466,11 @@ form {
 }
 
 .confirm-button {
-  background-color: #4caf50; /* Green color, adjust as needed */
+  background-color: #4caf50; 
   margin-right: 10px;
 }
 
 .cancel-button {
-  background-color: #f44336; /* Red color, adjust as needed */
+  background-color: #f44336;
   margin-left: 10px;
 }

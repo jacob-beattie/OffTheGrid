@@ -92,6 +92,8 @@ const LoginPanel = ({ onToggleCreateAccount }) => {
           Login
         </button>
 
+        <hr className="separator" />
+
         {/* Custom-styled Google Sign-In button */}
         <button type="button" className="google-sign-in-button" onClick={handleGoogleSignIn}>
           <img src="/google-logo.png" alt="Google Logo" className="google-logo" />
