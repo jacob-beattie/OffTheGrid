@@ -437,3 +437,13 @@ form {
     font-weight: bold;
     font-size: large;
 }
+
+.confirm-button {
+  background-color: #4caf50; /* Green color, adjust as needed */
+  margin-right: 10px;
+}
+
+.cancel-button {
+  background-color: #f44336; /* Red color, adjust as needed */
+  margin-left: 10px;
+}
