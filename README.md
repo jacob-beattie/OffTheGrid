@@ -7,8 +7,11 @@ OffTheGrid is a web application designed to help users track and manage their sh
 **Key Features**
 
 **- Dashboard:** View and manage your entire shoe collection in one place.
+
 **- Add Shoes:** Easily add new shoes to your collection with detailed information.
+
 **- Remove Shoes:** Remove shoes from your collection that you no longer own.
+
 **- Google Sign-In:** Securely log in with your Google account.
 
 **Running the Project Locally**
