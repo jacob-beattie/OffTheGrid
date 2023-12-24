@@ -14,6 +14,7 @@ OffTheGrid is a web application designed to help users track and manage their sh
 
 **- Google Sign-In:** Securely log in with your Google account.
 
+
 **Running the Project Locally**
 To run the project locally, follow these steps:
 
