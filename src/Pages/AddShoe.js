@@ -66,6 +66,9 @@ const AddShoe = () => {
           <img src="/OFFTHEGRID.png" alt="OffTheGrid Logo" className="logo-image" />
         </div>
         <nav className="nav-links-container">
+          <Link to="/importshoe" className="add-shoe-button">
+            Import Shoe
+          </Link>
           <Link to="/dashboard" className="add-shoe-button">
             Home
           </Link>
