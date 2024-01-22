@@ -29,6 +29,9 @@ const DashboardPage = () => {
           <img src="/OFFTHEGRID.png" alt="OffTheGrid Logo" className="logo-image" />
         </div>
         <nav className="nav-links-container">
+          <Link to="/importshoe" className="add-shoe-button">
+            Import Shoe
+          </Link>
           <Link to="/addshoe" className="add-shoe-button">
             Add Shoe
           </Link>
