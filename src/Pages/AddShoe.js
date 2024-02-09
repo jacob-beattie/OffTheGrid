@@ -5,7 +5,6 @@ import ShoeAddedPopup from '../Popups/ShoeAddedPopup';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const AddShoe = () => {
-  const [selectedShoe, setSelectedShoe] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [alreadyAdded, setAlreadyAdded] = useState(false);
   const [shoeOptions, setShoeOptions] = useState([]); // Store the shoe data in state
@@ -29,29 +28,20 @@ const AddShoe = () => {
     fetchShoes();
   }, [db]); // Dependency array to run the effect when db changes
 
-  // Function to handle the selection of a shoe
-  const handleShoeSelection = (event) => {
-    setSelectedShoe(event.target.value);
-  };
-
   // Function to handle adding the selected shoe to the dashboard
-  const handleAddShoeToDashboard = () => {
-    // Check if a shoe is selected
-    if (selectedShoe) {
-      // Check if the selected shoe is already on the dashboard
-      const isAlreadyAdded = state.shoes.some((shoe) => shoe.name === selectedShoe);
-      if (isAlreadyAdded) {
-        setAlreadyAdded(true); // Set the alreadyAdded state to true if the shoe is already added
-        setShowPopup(true); // Show the pop-up
-      } else {
-        const selectedShoeObject = shoeOptions.find((shoe) => shoe.name === selectedShoe);
-        if (selectedShoeObject) {
-          dispatch({ type: 'ADD_SHOE', payload: selectedShoeObject });
-          setShowPopup(true); // Show the pop-up for successful addition
-          setAlreadyAdded(false); // Reset the alreadyAdded state
-        }
+  const handleAddShoeToDashboard = (selectedShoe) => {
+    // Check if the selected shoe is already on the dashboard
+    const isAlreadyAdded = state.shoes.some((shoe) => shoe.name === selectedShoe);
+    if (isAlreadyAdded) {
+      setAlreadyAdded(true);
+    } else {
+      const selectedShoeObject = shoeOptions.find((shoe) => shoe.name === selectedShoe);
+      if (selectedShoeObject) {
+        dispatch({ type: 'ADD_SHOE', payload: selectedShoeObject });
+        setAlreadyAdded(false);
       }
     }
+    setShowPopup(true); // Show the pop-up for successful addition or already added message
   };
 
   // Function to close the pop-up
@@ -77,30 +67,38 @@ const AddShoe = () => {
           </Link>
         </nav>
       </header>
-      <main className="add-shoe-main">
-        <div className="add-shoe-container">
-          <h2>Add Shoe</h2>
-          {/* Dropdown to select a shoe */}
-          <select value={selectedShoe} onChange={handleShoeSelection}>
-            <option value="">Select a shoe</option>
+      <main className="dashboard-main">
+        <h2 className="shoe-collection-heading">Select a Shoe to Add</h2>
+        {shoeOptions.length > 0 ? (
+          <div className="shoe-panel-container">
             {shoeOptions.map((shoe, index) => (
-              <option key={index} value={shoe.name}> {/* Use shoe.name as the value */}
-                {shoe.name}
-              </option>
-            ))}
-          </select>
-          {/* Button to add the selected shoe to the dashboard */}
-          <button onClick={handleAddShoeToDashboard}>Add to Dashboard</button>
+              <div key={index} className="shoe-panel">
+                <h3 className="shoe-name">{shoe.name}</h3>
+                <img src={shoe.image} alt={shoe.name} />
 
-          {/* Conditionally render the pop-up based on showPopup state */}
-          {showPopup && (
-            <ShoeAddedPopup
-              onClose={closePopup}
-              alreadyAdded={alreadyAdded}
-              selectedShoe={selectedShoe}
-            />
-          )}
-        </div>
+                {/* Separate elements for titles and values */}
+                <p><span className="shoe-title">Price:</span> {shoe.price}</p>
+                <p><span className="shoe-title">Release Date:</span> {shoe.releaseDate}</p>
+
+                {/* Add button with dynamically selected shoe */}
+                <div className="add-button-container">
+                  <button onClick={() => handleAddShoeToDashboard(shoe.name)}>Add to Dashboard</button>
+                </div>
+
+                {/* Popup for confirmation */}
+                {showPopup && (
+                  <ShoeAddedPopup
+                    onClose={closePopup}
+                    alreadyAdded={alreadyAdded}
+                    selectedShoe={shoe.name}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No shoes available to add.</p>
+        )}
       </main>
       <footer>
         <p>Copyright © 2023 OffTheGrid</p>

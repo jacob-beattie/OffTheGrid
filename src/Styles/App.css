@@ -418,7 +418,7 @@ form {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 20px;
-  display: flex; 
+  display: flex;
   flex-direction: column; /* Stack the content vertically */
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
@@ -427,38 +427,45 @@ form {
 
 .shoe-panel h3 {
   margin-top: 0;
+  font-weight: bold; 
 }
 
 .shoe-panel p {
-  margin: 0;
+  margin: 5px;
+  font-size: 0.9vw; /* Adjust this value as needed */
+  font-weight: bold;
 }
 
 .shoe-panel img {
   margin-top: 5px;
   margin-bottom: 20px;
-  width: 160px; 
-  height: 90px; 
-  object-fit: cover; 
+  width: 160px;
+  height: 90px;
+  object-fit: cover;
 }
 
-/* Positioning the elements inside the shoe panel */
-
-.shoe-name {
-  font-weight: bold;
+.add-button-container, .remove-shoe-button {
+  margin-top: auto; /* Push the button to the bottom of the container */
+  
 }
 
-.shoe-title {
-  font-weight: bold;
-}
-
-.shoe-panel button {
-  background-color: #ff5757;
+.add-button-container button {
+  background-color: #4CAF50;
   color: #fff;
   border: none;
   padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  font-weight: bold;
+}
+
+.remove-shoe-button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
   font-weight: bold;
 }
 

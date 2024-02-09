@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoeContext } from '../Components/ShoeContext';
 import ShoeRemovePopup from '../Popups/ShoeRemovePopup';
-import { auth, onAuthStateChange } from '../Components/firebase';
+import { onAuthStateChange } from '../Components/firebase';
 
 const DashboardPage = () => {
   const { state, dispatch } = useContext(ShoeContext);
@@ -69,7 +69,8 @@ const DashboardPage = () => {
                 <p><span className="shoe-title">Release Date:</span> {shoe.releaseDate}</p>
 
                 {/* Remove button */}
-                <button onClick={() => handleRemoveShoe(shoe.name)}>Remove</button>
+                  <button id="remove-shoe-button" className="remove-shoe-button" onClick={() => handleRemoveShoe(shoe.name)}>Remove</button>
+
                 {/* Popup for confirmation */}
                 {selectedShoe && (
                   <ShoeRemovePopup onClose={handleClosePopup} onConfirm={handleConfirmRemove} shoeName={selectedShoe}/>
