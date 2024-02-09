@@ -8,11 +8,13 @@ body {
   margin: 0;
 }
 
-header, footer {
+header,
+footer {
   background-color: #1DB954;
 }
 
-a.add-shoe-button, #logout-button {
+a.add-shoe-button,
+#logout-button {
   color: #1DB954;
   background-color: #ffffff;
   padding: 10px 15px;
@@ -23,7 +25,8 @@ a.add-shoe-button, #logout-button {
   transition: all 0.2s ease-in-out;
 }
 
-a.add-shoe-button:hover, #logout-button:hover {
+a.add-shoe-button:hover,
+#logout-button:hover {
   transform: scale(1.1);
 }
 
@@ -41,7 +44,7 @@ header {
 }
 
 .logo-image {
-  width: 110px; 
+  width: 110px;
   height: auto;
 }
 
@@ -76,7 +79,7 @@ header a {
   border-radius: 4px;
   border: none;
   background-color: #f4f4f4;
-}  
+}
 
 .shoe-collection {
   display: flex;
@@ -91,10 +94,12 @@ header a {
   transition: all 0.2s ease-in-out;
   width: calc(25% - 40px);
   margin: 20px;
-  height: 400px; /* set fixed height */
+  height: 400px;
+  /* set fixed height */
   display: flex;
   flex-direction: column;
-  align-items: center; /* align child elements vertically */
+  align-items: center;
+  /* align child elements vertically */
 }
 
 #shoe-container {
@@ -133,14 +138,15 @@ footer {
   color: #fff;
   height: 70px;
 }
-  
+
 @media (max-width: 800px) {
   .shoe-collection {
-      flex-wrap: wrap;
-      justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
+
   .shoe-container {
-      width: calc(50% - 40px); 
+    width: calc(50% - 40px);
   }
 }
 
@@ -231,18 +237,18 @@ form {
 }
 
 .separator {
-  margin: 20px 0; 
+  margin: 20px 0;
   border: none;
   height: 1px;
-  background-color: #ccc; 
+  background-color: #ccc;
 }
 
 /* Styling for the Google Sign-In button */
 .google-sign-in-button {
   display: flex;
   align-items: center;
-  background-color: #005eff; 
-  color: #ffffff; 
+  background-color: #005eff;
+  color: #ffffff;
   padding: 10px;
   border: none;
   cursor: pointer;
@@ -252,9 +258,9 @@ form {
 
 /* Styling for the Google logo */
 .google-logo {
-  width: 20px; 
+  width: 20px;
   height: 20px;
-  margin-right: 40px; 
+  margin-right: 40px;
 }
 
 /* AddShoe.css */
@@ -313,7 +319,7 @@ form {
 /* AddShoe.css */
 
 .add-shoe-main {
-  
+
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -397,7 +403,8 @@ form {
 .shoe-collection-heading {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 50px; /* Add margin to create space between heading and shoe panels */
+  margin-bottom: 50px;
+  /* Add margin to create space between heading and shoe panels */
   font-size: 3em;
   font-family: 'Open Sans', sans-serif;
   color: #1DB954;
@@ -408,8 +415,8 @@ form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  max-width: 1400px; 
-  margin: 0 auto; 
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .shoe-panel {
@@ -419,20 +426,30 @@ form {
   border-radius: 10px;
   padding: 20px;
   display: flex;
-  flex-direction: column; /* Stack the content vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
+  flex-direction: column;
+  /* Stack the content vertically */
+  align-items: center;
+  /* Center items horizontally */
+  justify-content: center;
+  /* Center items vertically */
   text-align: center;
 }
 
-.shoe-panel h3 {
-  margin-top: 0;
-  font-weight: bold; 
+.shoe-title {
+  margin: 0px;
+  margin-bottom: 5px;
+  /* Adjust this value as needed */
+  font-size: 0.8vw;
+  /* Adjust this value as needed */
+  font-weight: bold;
 }
 
-.shoe-panel p {
-  margin: 5px;
-  font-size: 0.9vw; /* Adjust this value as needed */
+.shoe-title-release {
+  margin: 0px;
+  margin-top: 5px;
+  /* Adjust this value as needed */
+  font-size: 0.8vw;
+  /* Adjust this value as needed */
   font-weight: bold;
 }
 
@@ -444,9 +461,11 @@ form {
   object-fit: cover;
 }
 
-.add-button-container, .remove-shoe-button {
-  margin-top: auto; /* Push the button to the bottom of the container */
-  
+.add-button-container,
+.remove-shoe-button {
+  margin-top: auto;
+  /* Push the button to the bottom of the container */
+
 }
 
 .add-button-container button {
@@ -497,18 +516,18 @@ form {
 
 /* Styling for the close button */
 .popup-content button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: large;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: large;
 }
 
 .confirm-button {
-  background-color: #4caf50; 
+  background-color: #4caf50;
   margin-right: 10px;
 }
 

@@ -66,7 +66,7 @@ const DashboardPage = () => {
 
                 {/* Separate elements for titles and values */}
                 <p><span className="shoe-title">Price:</span> {shoe.price}</p>
-                <p><span className="shoe-title">Release Date:</span> {shoe.releaseDate}</p>
+                <p><span className="shoe-title-release">Release Date:</span> {shoe.releaseDate}</p>
 
                 {/* Remove button */}
                   <button id="remove-shoe-button" className="remove-shoe-button" onClick={() => handleRemoveShoe(shoe.name)}>Remove</button>
