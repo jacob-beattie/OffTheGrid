@@ -41,7 +41,7 @@ header {
 }
 
 .logo-image {
-  width: 110px; /* Adjust the width as needed */
+  width: 110px; 
   height: auto;
 }
 
@@ -140,7 +140,7 @@ footer {
       justify-content: space-between;
   }
   .shoe-container {
-      width: calc(50% - 40px); /* change width to 50% */
+      width: calc(50% - 40px); 
   }
 }
 
@@ -231,10 +231,10 @@ form {
 }
 
 .separator {
-  margin: 20px 0; /* Adjust the margin as needed */
+  margin: 20px 0; 
   border: none;
   height: 1px;
-  background-color: #ccc; /* Adjust the color as needed */
+  background-color: #ccc; 
 }
 
 /* Styling for the Google Sign-In button */
@@ -418,7 +418,7 @@ form {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 20px;
-  display: flex; /* Use flexbox */
+  display: flex; 
   flex-direction: column; /* Stack the content vertically */
   align-items: center; /* Center items horizontally */
   justify-content: center; /* Center items vertically */
