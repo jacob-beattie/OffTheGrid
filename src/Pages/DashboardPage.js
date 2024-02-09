@@ -1,11 +1,26 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoeContext } from '../Components/ShoeContext';
 import ShoeRemovePopup from '../Popups/ShoeRemovePopup';
+import { auth, onAuthStateChange } from '../Components/firebase';
 
 const DashboardPage = () => {
   const { state, dispatch } = useContext(ShoeContext);
   const [selectedShoe, setSelectedShoe] = useState(null);
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChange((user) => {
+      if (user.loggedIn) {
+        setEmail(user.email);
+      } else {
+        setEmail('');
+      }
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
 
   const handleRemoveShoe = (shoeName) => {
     setSelectedShoe(shoeName);
@@ -41,27 +56,27 @@ const DashboardPage = () => {
         </nav>
       </header>
       <main className="dashboard-main">
-      <h2 className="shoe-collection-heading">Jacob's Shoe Collection</h2>
-      {state.shoes.length > 0 ? (        
-            <div className="shoe-panel-container">
-              {state.shoes.map((shoe, index) => (
-                <div key={index} className="shoe-panel">
-                  <h3 className="shoe-name">{shoe.name}</h3>
-                  <img src={shoe.image} alt={shoe.name} />
+        <h2 className="shoe-collection-heading">{email}'s Shoe Collection</h2>
+        {state.shoes.length > 0 ? (        
+          <div className="shoe-panel-container">
+            {state.shoes.map((shoe, index) => (
+              <div key={index} className="shoe-panel">
+                <h3 className="shoe-name">{shoe.name}</h3>
+                <img src={shoe.image} alt={shoe.name} />
 
-                  {/* Separate elements for titles and values */}
-                  <p><span className="shoe-title">Price:</span> {shoe.price}</p>
-                  <p><span className="shoe-title">Release Date:</span> {shoe.releaseDate}</p>
+                {/* Separate elements for titles and values */}
+                <p><span className="shoe-title">Price:</span> {shoe.price}</p>
+                <p><span className="shoe-title">Release Date:</span> {shoe.releaseDate}</p>
 
-                  {/* Remove button */}
-                  <button onClick={() => handleRemoveShoe(shoe.name)}>Remove</button>
-                  {/* Popup for confirmation */}
-                  {selectedShoe && (
-                    <ShoeRemovePopup onClose={handleClosePopup} onConfirm={handleConfirmRemove} shoeName={selectedShoe}/>
-                  )}
-                </div>
-              ))}
-            </div>
+                {/* Remove button */}
+                <button onClick={() => handleRemoveShoe(shoe.name)}>Remove</button>
+                {/* Popup for confirmation */}
+                {selectedShoe && (
+                  <ShoeRemovePopup onClose={handleClosePopup} onConfirm={handleConfirmRemove} shoeName={selectedShoe}/>
+                )}
+              </div>
+            ))}
+          </div>
         ) : (
           <p>No shoes added to the dashboard yet.</p>
         )}
