@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 // Import the popup components
-import AccountCreatedPopup from '../Popups/AccountCreatedPopup';
-import AccountExistsPopup from '../Popups/AccountExistsPopup';
+import AccountCreatedPopup from "../Popups/AccountCreatedPopup";
+import AccountExistsPopup from "../Popups/AccountExistsPopup";
 
 const CreateAccount = ({ onToggleLogin }) => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    repeatPassword: '',
+    email: "",
+    password: "",
+    repeatPassword: "",
   });
 
   // State variables to track popup visibility
@@ -33,12 +33,12 @@ const CreateAccount = ({ onToggleLogin }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // User account creation successful, you can now access userCredential.user
-        console.log('User account created:', userCredential.user);
+        console.log("User account created:", userCredential.user);
         setIsAccountCreated(true); // Show the "Account Created" popup
       })
       .catch((error) => {
         // Handle errors occurred during account creation
-        console.error('Error creating account:', error.message);
+        console.error("Error creating account:", error.message);
         setIsAccountExists(true); // Show the "Account Exists" popup
       });
   };
@@ -49,9 +49,9 @@ const CreateAccount = ({ onToggleLogin }) => {
     setIsAccountExists(false);
 
     setFormData({
-      email: '',
-      password: '',
-      repeatPassword: '',
+      email: "",
+      password: "",
+      repeatPassword: "",
     });
   };
 
@@ -59,7 +59,7 @@ const CreateAccount = ({ onToggleLogin }) => {
     <div className="login-container">
       <h2 className="login-logo">Create Account</h2>
       <form id="login-form" onSubmit={handleSubmit}>
-      <input
+        <input
           type="email"
           id="email"
           name="email"
@@ -95,7 +95,7 @@ const CreateAccount = ({ onToggleLogin }) => {
         <button type="submit" className="login-button">
           Create Account
         </button>
-        <p className='no-account' onClick={onToggleLogin}>
+        <p className="no-account" onClick={onToggleLogin}>
           Already have an account?
         </p>
 
@@ -103,9 +103,7 @@ const CreateAccount = ({ onToggleLogin }) => {
         {isAccountCreated && (
           <AccountCreatedPopup onClose={handleClosePopups} />
         )}
-        {isAccountExists && (
-          <AccountExistsPopup onClose={handleClosePopups} />
-        )}
+        {isAccountExists && <AccountExistsPopup onClose={handleClosePopups} />}
       </form>
     </div>
   );

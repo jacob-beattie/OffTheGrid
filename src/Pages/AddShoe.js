@@ -1,11 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ShoeContext } from '../Components/ShoeContext';
-import ShoeAddedPopup from '../Popups/ShoeAddedPopup';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ShoeContext } from "../Components/ShoeContext";
+import ShoeAddedPopup from "../Popups/ShoeAddedPopup";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const AddShoe = () => {
-  const [selectedShoe, setSelectedShoe] = useState('');
+  const [selectedShoe, setSelectedShoe] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [alreadyAdded, setAlreadyAdded] = useState(false);
   const [shoeOptions, setShoeOptions] = useState([]); // Store the shoe data in state
@@ -19,7 +19,7 @@ const AddShoe = () => {
   useEffect(() => {
     // Fetch the shoe data from Firestore
     const fetchShoes = async () => {
-      const shoesCollection = collection(db, 'Shoes');
+      const shoesCollection = collection(db, "Shoes");
       const snapshot = await getDocs(shoesCollection);
       const shoeData = snapshot.docs.map((doc) => doc.data());
       console.log(shoeData);
@@ -39,14 +39,18 @@ const AddShoe = () => {
     // Check if a shoe is selected
     if (selectedShoe) {
       // Check if the selected shoe is already on the dashboard
-      const isAlreadyAdded = state.shoes.some((shoe) => shoe.name === selectedShoe);
+      const isAlreadyAdded = state.shoes.some(
+        (shoe) => shoe.name === selectedShoe
+      );
       if (isAlreadyAdded) {
         setAlreadyAdded(true); // Set the alreadyAdded state to true if the shoe is already added
         setShowPopup(true); // Show the pop-up
       } else {
-        const selectedShoeObject = shoeOptions.find((shoe) => shoe.name === selectedShoe);
+        const selectedShoeObject = shoeOptions.find(
+          (shoe) => shoe.name === selectedShoe
+        );
         if (selectedShoeObject) {
-          dispatch({ type: 'ADD_SHOE', payload: selectedShoeObject });
+          dispatch({ type: "ADD_SHOE", payload: selectedShoeObject });
           setShowPopup(true); // Show the pop-up for successful addition
           setAlreadyAdded(false); // Reset the alreadyAdded state
         }
@@ -63,7 +67,11 @@ const AddShoe = () => {
     <div>
       <header>
         <div className="logo-container">
-          <img src="/OFFTHEGRID.png" alt="OffTheGrid Logo" className="logo-image" />
+          <img
+            src="/OFFTHEGRID.png"
+            alt="OffTheGrid Logo"
+            className="logo-image"
+          />
         </div>
         <nav className="nav-links-container">
           <Link to="/importshoe" className="add-shoe-button">
@@ -84,7 +92,9 @@ const AddShoe = () => {
           <select value={selectedShoe} onChange={handleShoeSelection}>
             <option value="">Select a shoe</option>
             {shoeOptions.map((shoe, index) => (
-              <option key={index} value={shoe.name}> {/* Use shoe.name as the value */}
+              <option key={index} value={shoe.name}>
+                {" "}
+                {/* Use shoe.name as the value */}
                 {shoe.name}
               </option>
             ))}

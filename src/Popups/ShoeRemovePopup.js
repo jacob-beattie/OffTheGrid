@@ -1,6 +1,6 @@
 // ShoeRemovePopup.js
 
-import React from 'react';
+import React from "react";
 
 const ShoeRemovePopup = ({ onClose, onConfirm, shoeName }) => {
   return (

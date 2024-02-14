@@ -1,6 +1,6 @@
 // ShoeAddedPopup.js
 
-import React from 'react';
+import React from "react";
 
 const ShoeAddedPopup = ({ onClose, alreadyAdded, selectedShoe }) => {
   return (
@@ -15,7 +15,10 @@ const ShoeAddedPopup = ({ onClose, alreadyAdded, selectedShoe }) => {
           ) : (
             <div>
               <h3>Shoe Added Successfully</h3>
-              <p>Your selected shoe "{selectedShoe}" has been added to the dashboard.</p>
+              <p>
+                Your selected shoe "{selectedShoe}" has been added to the
+                dashboard.
+              </p>
             </div>
           )}
           <button onClick={onClose}>Close</button>
@@ -26,4 +29,3 @@ const ShoeAddedPopup = ({ onClose, alreadyAdded, selectedShoe }) => {
 };
 
 export default ShoeAddedPopup;
-

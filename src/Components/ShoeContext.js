@@ -1,5 +1,5 @@
 // ShoeContext.js
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer } from "react";
 
 const initialState = {
   shoes: [],
@@ -9,12 +9,12 @@ const ShoeContext = createContext();
 
 const shoeReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_SHOE':
+    case "ADD_SHOE":
       return {
         ...state,
         shoes: [...state.shoes, action.payload],
       };
-    case 'REMOVE_SHOE':
+    case "REMOVE_SHOE":
       return {
         ...state,
         shoes: state.shoes.filter((shoe) => shoe.name !== action.payload),

@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
-import LoginErrorPopup from '../Popups/LoginErrorPopup';
+import React, { useState } from "react";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import LoginErrorPopup from "../Popups/LoginErrorPopup";
 
 const LoginPanel = ({ onToggleCreateAccount }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const navigateTo = useNavigate();
@@ -27,13 +32,13 @@ const LoginPanel = ({ onToggleCreateAccount }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // User login successful, you can now access userCredential.user
-        console.log('User logged in:', userCredential.user);
+        console.log("User logged in:", userCredential.user);
         // Additional code or redirection logic after successful login
-        navigateTo('/dashboard');
+        navigateTo("/dashboard");
       })
       .catch((error) => {
         // Handle errors occurred during login
-        console.error('Error logging in:', error.message);
+        console.error("Error logging in:", error.message);
         setError(error.message);
         setShowErrorPopup(true);
       });
@@ -46,11 +51,11 @@ const LoginPanel = ({ onToggleCreateAccount }) => {
     try {
       const result = await signInWithPopup(auth, provider);
       // User signed in with Google, you can now access result.user
-      console.log('Google Sign-In successful:', result.user);
+      console.log("Google Sign-In successful:", result.user);
       // Additional code or redirection logic after successful login
-      navigateTo('/dashboard');
+      navigateTo("/dashboard");
     } catch (error) {
-      console.error('Error during Google Sign-In:', error.message);
+      console.error("Error during Google Sign-In:", error.message);
       setError(error.message);
       setShowErrorPopup(true);
     }
@@ -58,8 +63,8 @@ const LoginPanel = ({ onToggleCreateAccount }) => {
 
   const handleCloseErrorPopup = () => {
     setShowErrorPopup(false);
-    setEmail('');
-    setPassword('');
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -95,12 +100,20 @@ const LoginPanel = ({ onToggleCreateAccount }) => {
         <hr className="separator" />
 
         {/* Custom-styled Google Sign-In button */}
-        <button type="button" className="google-sign-in-button" onClick={handleGoogleSignIn}>
-          <img src="/google-logo.png" alt="Google Logo" className="google-logo" />
+        <button
+          type="button"
+          className="google-sign-in-button"
+          onClick={handleGoogleSignIn}
+        >
+          <img
+            src="/google-logo.png"
+            alt="Google Logo"
+            className="google-logo"
+          />
           Sign In with Google
         </button>
 
-        <p className='no-account' onClick={onToggleCreateAccount}>
+        <p className="no-account" onClick={onToggleCreateAccount}>
           Don't have an account?
         </p>
 

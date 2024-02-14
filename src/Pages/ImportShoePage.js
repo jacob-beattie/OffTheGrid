@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getFirestore, collection, addDoc, getDocs, query, where } from 'firebase/firestore';
-import ShoeImportedPopup from '../Popups/ShoeImportedPopup';
-import ShoeExistsPopup from '../Popups/ShoeExistsPopup';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import ShoeImportedPopup from "../Popups/ShoeImportedPopup";
+import ShoeExistsPopup from "../Popups/ShoeExistsPopup";
 
 const ImportShoePage = () => {
-  const [shoeName, setShoeName] = useState('');
-  const [shoePrice, setShoePrice] = useState('');
-  const [shoeReleaseDate, setShoeReleaseDate] = useState('');
+  const [shoeName, setShoeName] = useState("");
+  const [shoePrice, setShoePrice] = useState("");
+  const [shoeReleaseDate, setShoeReleaseDate] = useState("");
   const [showImportedPopup, setShowImportedPopup] = useState(false);
   const [showExistsPopup, setShowExistsPopup] = useState(false);
 
@@ -16,8 +23,10 @@ const ImportShoePage = () => {
 
     // Check if a shoe with the same name already exists
     const db = getFirestore();
-    const shoesCollection = collection(db, 'Shoes');
-    const querySnapshot = await getDocs(query(shoesCollection, where('name', '==', shoeName)));
+    const shoesCollection = collection(db, "Shoes");
+    const querySnapshot = await getDocs(
+      query(shoesCollection, where("name", "==", shoeName))
+    );
 
     if (querySnapshot.size > 0) {
       // A shoe with the same name already exists, show the ShoeExistsPopup
@@ -37,7 +46,7 @@ const ImportShoePage = () => {
         // Set showImportedPopup to true to display the success popup
         setShowImportedPopup(true);
       } catch (error) {
-        console.error('Error adding shoe to the database:', error.message);
+        console.error("Error adding shoe to the database:", error.message);
       }
     }
   };
@@ -56,7 +65,11 @@ const ImportShoePage = () => {
     <div>
       <header>
         <div className="logo-container">
-          <img src="/OFFTHEGRID.png" alt="OffTheGrid Logo" className="logo-image" />
+          <img
+            src="/OFFTHEGRID.png"
+            alt="OffTheGrid Logo"
+            className="logo-image"
+          />
         </div>
         <nav className="nav-links-container">
           <Link to="/addshoe" className="add-shoe-button">
@@ -108,13 +121,14 @@ const ImportShoePage = () => {
 
       {/* Conditionally render the ShoeImportedPopup based on showImportedPopup state */}
       {showImportedPopup && (
-        <ShoeImportedPopup onClose={closeImportedPopup} selectedShoe={shoeName} />
+        <ShoeImportedPopup
+          onClose={closeImportedPopup}
+          selectedShoe={shoeName}
+        />
       )}
 
       {/* Conditionally render the ShoeExistsPopup based on showExistsPopup state */}
-      {showExistsPopup && (
-        <ShoeExistsPopup onClose={closeExistsPopup} />
-      )}
+      {showExistsPopup && <ShoeExistsPopup onClose={closeExistsPopup} />}
 
       <footer>
         <p>Copyright © 2023 OffTheGrid</p>

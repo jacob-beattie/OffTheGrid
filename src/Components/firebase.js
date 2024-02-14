@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "offthegrid-d62de.appspot.com",
   messagingSenderId: "730328259339",
   appId: "1:730328259339:web:3068752f232af2a7cea00e",
-  measurementId: "G-CP1DQSG542"
+  measurementId: "G-CP1DQSG542",
 };
 
 // Initialize Firebase
